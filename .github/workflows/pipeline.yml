@@ -20,12 +20,13 @@ jobs:
           python-version: '3.7.11'
 
       - name: Install Requirements
-        run:  pip install flask
+        run:  pip install flask pytest flask-wtf
               
       - name: Unit Test
         run: python -m unittest -v test
 
   SonarCloud:
+    needs: [Build]
     name: SonarCloud
     runs-on: ubuntu-latest
     steps:
